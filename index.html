@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SawMe - Live Time</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #0f0f0f;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 60px;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      color: #aaa;
+      margin-bottom: 40px;
+    }
+
+    #time {
+      font-size: 70px;
+      font-weight: bold;
+    }
+
+    #day {
+      font-size: 30px;
+      margin-top: 20px;
+    }
+
+    #date {
+      font-size: 20px;
+      color: #aaa;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <h1>SawMe</h1>
+    <p class="subtitle">Your Live Date & Time</p>
+
+    <div id="time">00:00:00</div>
+    <div id="day">Loading...</div>
+    <div id="date">Loading...</div>
+  </div>
+
+  <script>
+    function updateClock() {
+      const now = new Date();
+
+      document.getElementById("time").textContent =
+        now.toLocaleTimeString();
+
+      document.getElementById("day").textContent =
+        now.toLocaleDateString(undefined, {
+          weekday: "long"
+        });
+
+      document.getElementById("date").textContent =
+        now.toLocaleDateString(undefined, {
+          day: "numeric",
+          month: "long",
+          year: "numeric"
+        });
+    }
+
+    updateClock();
+    setInterval(updateClock, 1000);
+  </script>
+
+</body>
+</html>
